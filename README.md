@@ -1,118 +1,92 @@
-# ![Espanso Logo](images/espanso-dark.png#gh-dark-mode-only) ![Espanso Logo](images/espanso-light.png#gh-light-mode-only)
+# expandir
 
-> *A cross-platform Text Expander written in Rust*
+> A personal fork of [espanso](https://github.com/espanso/espanso), the cross-platform text expander written in Rust.
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/espanso/espanso)
-![Maintenance](https://img.shields.io/badge/Maintained-yes-green.svg)
-![Language](https://img.shields.io/badge/language-rust-orange)
-![License](https://img.shields.io/github/license/espanso/espanso)
+![License](https://img.shields.io/github/license/BrunosGits/expandir)
 
 ![Platforms](https://img.shields.io/badge/platforms-Windows%2C%20macOS%20and%20Linux-blue)
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/espanso/espanso)
+## About this project
 
-|         Example: 2019          |              Example: 2025              |
-| :----------------------------: | :-------------------------------------: |
-| ![example](images/example.gif) | ![example2025](images/example-2025.gif) |
+expandir is my personal fork of [espanso](https://github.com/espanso/espanso), a
+privacy-first, cross-platform text expander. I use it every day.
 
-## Quick Links
+I forked it because I wanted:
 
-* [espanso website](https://espanso.org)
-* [espanso hub](https://hub.espanso.org/)
+* a sandbox to learn and practice on a real Rust and C++ codebase
+* a place to prototype features and experiments that don't need to fit the official project
 
-### What is a Text Expander?
+The code is based on the official espanso codebase. It is not an official espanso release
+and it is not affiliated with the espanso project in any way.
 
-A *text expander* is a program that detects when you type
-a specific **keyword** and replaces it with **something else**.
-This is useful in many ways:
+The name comes from the Portuguese verb expandir, to expand. I chose a name that stands on
+its own because I did not want this fork to sound like a premium or paid edition of espanso.
+It is neither of those. It is just my personal build.
 
-* **Save a lot of typing**, expanding common sentences
-* Create **system-wide** code snippets
-* Execute **custom scripts**
-* Use **emojis** like a pro
-* System-wide 'autocorrect' specific to you
+If you want a stable text expander, use the official project:
+**[https://github.com/espanso/espanso](https://github.com/espanso/espanso)**.
 
-## Key Features
+## What makes this fork different
 
-* Cross-platform (**Windows**, **macOS**, **Linux**)
-* Privacy-first (100% local, no tracking)
-* Works with almost **any program**
-* **Emoji** support 😄
-* **Image** support
-* Includes a powerful **Search Bar** 🔎
-* **Date** expansion support
-* **Custom scripts** support
-* **Shell commands** support
-* **App-specific** configurations
-* Support [Forms](https://espanso.org/docs/matches/forms/)
-* Expandable with **packages**
-* Built-in **package manager** for [espanso hub](https://hub.espanso.org/)
-* File based configuration
-* Support Regex triggers
-* Experimental Wayland support
-* Written in Rust (Fast, Reliable)
+Features and experiments I'm adding, all opt-in:
 
-## Community & Support
-* 💬 [espanso Discord Server](https://discord.gg/DFcCNDg7bB)
-* 📖 [official documentation](https://espanso.org/docs/)
-* 💬 [official Subreddit](https://www.reddit.com/r/espanso/)
-* 🐛 [Report Issues](https://github.com/espanso/espanso/issues)
-* 💡 [Feature Requests](https://github.com/espanso/espanso/discussions)
+| Feature | Status |
+| ------- | ------ |
+| Search window opens near the mouse cursor (`search_use_cursor_position`) | Working on macOS. Windows and Linux testing pending |
+| Clipboard history and searchable history UI | Planned |
+| Temporary copy/paste hotspots (register slots) | Planned |
+| AI snippet authoring assistant | Planned |
+| Settings panel (GUI for config toggles) | Planned |
+| Match editor GUI | Planned |
 
-## Quick Start Examples
+See [ROADMAP.md](./ROADMAP.md) for the full plan.
 
-You can create additional files to organize your matches any way you want.<br />
-Make sure to adhere to proper YAML spacing.
-```yaml
-matches:
-  - trigger: ":hello"
-    replace: "Hi There!"
-  - triggers: [":test1", ":test2"]
-    replace: "These both expand to the same thing"
+## A personal note
+
+espanso is one of my all-time favorite piece of software. I used TextBlaze for years, more than
+61K expansions logged with it, and when I discovered espanso I switched and never
+looked back. It's fast, private, and works everywhere I do.
+
+This fork is my way of giving back. It's a playground where I can build the features I
+wish espanso had, and a place to learn from a codebase I genuinely admire. I can't wait
+to see these features land, starting with the search window opening near the cursor.
+It already works great on my Mac.
+
+## Getting started
+
+Setup and usage are the same as espanso. The only difference is the binary name, which is
+`expandir` instead of `espanso`. Follow the official
+[espanso documentation](https://espanso.org/docs/) to install and configure it, and use
+`expandir` wherever the docs say `espanso`.
+
+### Building from source
+
+```sh
+cargo build --release
 ```
-## Team Members and Contributors
 
-### Team
+The built binary is `target/release/expandir`. For a build with the search window (modulo)
+UI:
 
-[Federico Terzi](https://github.com/federico-terzi) (Creator of espanso)<br />
-Rest of team in Alphabetical Order<br />
-[Archigos](https://github.com/Archigos) (Maintainer)<br />
-[Auca](https://github.com/AucaCoyan) (Lead Maintainer)<br />
-[n8henrie](https://github.com/n8henrie)<br />
-[smeech](https://github.com/smeech)<br />
+```sh
+cargo build --release --no-default-features --features modulo,vendored-tls
+```
 
-You can also see the up to date list of Team Members [here](https://github.com/orgs/espanso/people)
+## Acknowledgments
 
-### Contributors
+This project is a fork of espanso, created by [Federico Terzi](https://github.com/federico-terzi)
+and maintained by the espanso team. The core work is theirs:
 
-So many people have helped the project along the way. Thank you all!
+* [espanso repository](https://github.com/espanso/espanso)
+* [espanso website](https://espanso.org)
+* [espanso hub](https://hub.espanso.org)
 
-[![Image](https://contrib.rocks/image?repo=espanso/espanso)](https://github.com/espanso/espanso/graphs/contributors)
-
-## Sponsors
-
-We want to thank SignPath.io for code signing the Windows binaries ❤️
-
-## Donations
-
-espanso is a free, open-source software project created by [Federico Terzi](https://github.com/federico-terzi) and now maintained by a small team.<br />
-If you liked the project and would like to support further development,
-please consider  making a small donation, it really helps :)
-
-### Current Options
-
-| PayPal | Coming Soon |
-| :----: | :---------: |
-| [![Donate with PayPal](images/donate.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FHNLR5DRS267E&source=url) | |
-
-## Remarks
-
-* Thanks to [libxdo](https://github.com/jordansissel/xdotool) and [xclip](https://github.com/astrand/xclip), used to implement the Linux port.
-* Thanks to [libxkbcommon](https://xkbcommon.org/) and [wl-clipboard](https://github.com/bugaevc/wl-clipboard), used to implement the Wayland port.
-* Thanks to [wxWidgets](https://www.wxwidgets.org/) for providing a powerful cross-platform GUI library.
-* Free code signing provided by SignPath.io, certificate by SignPath Foundation.
+Thanks also to the libraries the project uses:
+[libxdo](https://github.com/jordansissel/xdotool), [xclip](https://github.com/astrand/xclip),
+[libxkbcommon](https://xkbcommon.org/), [wl-clipboard](https://github.com/bugaevc/wl-clipboard),
+and [wxWidgets](https://www.wxwidgets.org/).
 
 ## License
 
-espanso was created by [Federico Terzi](http://federicoterzi.com)
-and is licensed under the [GPL-3.0 license](/LICENSE).
+This project inherits the upstream license and is licensed under the
+[GPL-3.0 license](./LICENSE), as is the original espanso project.
